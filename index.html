@@ -3,25 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Sistema de Gestión de Residuos | SENA</title>
+    <title>SENA Green System | Environmental Control Center</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Animated Background -->
-    <div class="bg-animation">
-        <div class="bg-gradient"></div>
-        <div class="bg-particles" id="bgParticles"></div>
-    </div>
+    <div class="bg-canvas" id="bgCanvas"></div>
+    <div class="bg-mesh"></div>
 
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar__header">
             <div class="sidebar__logo">
                 <div class="sidebar__logo-icon">
-                    <i class="fas fa-recycle"></i>
+                    <div class="sidebar__logo-ring"></div>
+                    <i class="fas fa-leaf"></i>
                 </div>
                 <div class="sidebar__logo-text">
                     <span class="sidebar__logo-title">SENA</span>
@@ -36,45 +35,46 @@
         <nav class="sidebar__nav">
             <div class="sidebar__nav-section">
                 <span class="sidebar__nav-label">MAIN</span>
-                <a href="#" class="sidebar__link active" data-tooltip="Dashboard">
-                    <i class="fas fa-th-large"></i>
+                <a href="#" class="sidebar__link active">
+                    <div class="sidebar__link-icon"><i class="fas fa-th-large"></i></div>
                     <span>Dashboard</span>
+                    <div class="sidebar__link-indicator"></div>
                 </a>
-                <a href="#" class="sidebar__link" data-tooltip="Registro">
-                    <i class="fas fa-plus-circle"></i>
-                    <span>Registro</span>
+                <a href="#" class="sidebar__link">
+                    <div class="sidebar__link-icon"><i class="fas fa-plus-circle"></i></div>
+                    <span>New Entry</span>
                 </a>
-                <a href="#" class="sidebar__link" data-tooltip="Reportes">
-                    <i class="fas fa-chart-pie"></i>
-                    <span>Reportes</span>
+                <a href="#" class="sidebar__link">
+                    <div class="sidebar__link-icon"><i class="fas fa-chart-mixed"></i></div>
+                    <span>Analytics</span>
                 </a>
             </div>
             <div class="sidebar__nav-section">
-                <span class="sidebar__nav-label">GESTIÓN</span>
-                <a href="#" class="sidebar__link" data-tooltip="Contenedores">
-                    <i class="fas fa-dumpster"></i>
-                    <span>Contenedores</span>
+                <span class="sidebar__nav-label">MANAGEMENT</span>
+                <a href="#" class="sidebar__link">
+                    <div class="sidebar__link-icon"><i class="fas fa-dumpster"></i></div>
+                    <span>Containers</span>
                     <span class="sidebar__badge">4</span>
                 </a>
-                <a href="#" class="sidebar__link" data-tooltip="Alertas">
-                    <i class="fas fa-bell"></i>
-                    <span>Alertas</span>
-                    <span class="sidebar__badge sidebar__badge--danger">3</span>
+                <a href="#" class="sidebar__link">
+                    <div class="sidebar__link-icon"><i class="fas fa-truck"></i></div>
+                    <span>Collection</span>
                 </a>
-                <a href="#" class="sidebar__link" data-tooltip="Calendario">
-                    <i class="fas fa-calendar-alt"></i>
-                    <span>Calendario</span>
+                <a href="#" class="sidebar__link">
+                    <div class="sidebar__link-icon"><i class="fas fa-bell"></i></div>
+                    <span>Alerts</span>
+                    <span class="sidebar__badge sidebar__badge--danger">3</span>
                 </a>
             </div>
             <div class="sidebar__nav-section">
-                <span class="sidebar__nav-label">SISTEMA</span>
-                <a href="#" class="sidebar__link" data-tooltip="Configuración">
-                    <i class="fas fa-cog"></i>
-                    <span>Configuración</span>
+                <span class="sidebar__nav-label">REPORTS</span>
+                <a href="#" class="sidebar__link">
+                    <div class="sidebar__link-icon"><i class="fas fa-file-alt"></i></div>
+                    <span>Documents</span>
                 </a>
-                <a href="#" class="sidebar__link" data-tooltip="Ayuda">
-                    <i class="fas fa-question-circle"></i>
-                    <span>Ayuda</span>
+                <a href="#" class="sidebar__link">
+                    <div class="sidebar__link-icon"><i class="fas fa-calendar"></i></div>
+                    <span>Schedule</span>
                 </a>
             </div>
         </nav>
@@ -83,11 +83,13 @@
             <div class="sidebar__user">
                 <div class="sidebar__user-avatar">
                     <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="User">
+                    <span class="sidebar__user-status"></span>
                 </div>
                 <div class="sidebar__user-info">
                     <span class="sidebar__user-name">Admin SENA</span>
                     <span class="sidebar__user-role">Administrator</span>
                 </div>
+                <i class="fas fa-ellipsis-v"></i>
             </div>
         </div>
     </aside>
@@ -100,23 +102,29 @@
                 <button class="topbar__menu-btn" id="menuBtn">
                     <i class="fas fa-bars"></i>
                 </button>
+                <div class="topbar__breadcrumb">
+                    <span class="topbar__breadcrumb-item">Home</span>
+                    <i class="fas fa-chevron-right"></i>
+                    <span class="topbar__breadcrumb-item topbar__breadcrumb-item--active">Dashboard</span>
+                </div>
+            </div>
+            <div class="topbar__center">
                 <div class="topbar__search">
                     <i class="fas fa-search"></i>
                     <input type="text" placeholder="Search anything...">
-                    <span class="topbar__search-shortcut">⌘K</span>
+                    <div class="topbar__search-shortcut">
+                        <kbd>⌘</kbd><kbd>K</kbd>
+                    </div>
                 </div>
             </div>
             <div class="topbar__right">
-                <div class="topbar__actions">
-                    <button class="topbar__action-btn" data-tooltip="Notifications">
-                        <i class="fas fa-bell"></i>
-                        <span class="topbar__action-badge">5</span>
-                    </button>
-                    <button class="topbar__action-btn" data-tooltip="Messages">
-                        <i class="fas fa-envelope"></i>
-                        <span class="topbar__action-badge">2</span>
-                    </button>
-                </div>
+                <button class="topbar__action-btn" data-tooltip="Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="topbar__action-btn" data-tooltip="Notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="topbar__action-badge">5</span>
+                </button>
                 <div class="topbar__divider"></div>
                 <div class="topbar__user">
                     <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="User">
@@ -131,518 +139,622 @@
 
         <!-- Dashboard Content -->
         <div class="dashboard">
-            <!-- Welcome Banner -->
-            <div class="welcome-banner" id="welcomeBanner">
-                <div class="welcome-banner__content">
-                    <div class="welcome-banner__text">
-                        <span class="welcome-banner__greeting" id="greeting">Good Morning</span>
-                        <h1 class="welcome-banner__title">Environmental Control Center</h1>
-                        <p class="welcome-banner__desc">Monitor and manage waste across all facilities in real-time</p>
-                    </div>
-                    <div class="welcome-banner__image">
-                        <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=300&fit=crop" alt="Sustainability">
-                    </div>
-                </div>
-                <div class="welcome-banner__stats">
-                    <div class="welcome-banner__stat">
-                        <i class="fas fa-seedling"></i>
-                        <div>
-                            <span class="welcome-banner__stat-value">Eco Score</span>
-                            <span class="welcome-banner__stat-label">92/100</span>
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-section__content">
+                    <div class="hero-section__text">
+                        <div class="hero-section__badge">
+                            <span class="hero-section__badge-dot"></span>
+                            System Online
+                        </div>
+                        <h1 class="hero-section__title">
+                            Environmental <span class="gradient-text">Control Center</span>
+                        </h1>
+                        <p class="hero-section__desc">
+                            Monitor and manage waste across all facilities in real-time. 
+                            Making our campus more sustainable, one step at a time.
+                        </p>
+                        <div class="hero-section__actions">
+                            <button class="btn-primary">
+                                <i class="fas fa-plus"></i>
+                                New Registration
+                            </button>
+                            <button class="btn-secondary">
+                                <i class="fas fa-play"></i>
+                                Watch Demo
+                            </button>
                         </div>
                     </div>
-                    <div class="welcome-banner__stat">
-                        <i class="fas fa-fire"></i>
-                        <div>
-                            <span class="welcome-banner__stat-value">Active Alerts</span>
-                            <span class="welcome-banner__stat-label">3 Critical</span>
-                        </div>
-                    </div>
-                    <div class="welcome-banner__stat">
-                        <i class="fas fa-truck"></i>
-                        <div>
-                            <span class="welcome-banner__stat-value">Next Collection</span>
-                            <span class="welcome-banner__stat-label">Tomorrow 8AM</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Stats Cards -->
-            <div class="stats-grid">
-                <div class="stat-card stat-card--glass" data-tilt>
-                    <div class="stat-card__header">
-                        <div class="stat-card__icon stat-card__icon--blue">
-                            <i class="fas fa-trash-alt"></i>
-                        </div>
-                        <span class="stat-card__trend stat-card__trend--up">
-                            <i class="fas fa-arrow-up"></i> 12%
-                        </span>
-                    </div>
-                    <div class="stat-card__value" data-target="2847">0</div>
-                    <div class="stat-card__label">Total Waste Registered</div>
-                    <div class="stat-card__bar">
-                        <div class="stat-card__bar-fill" style="width: 75%"></div>
-                    </div>
-                </div>
-
-                <div class="stat-card stat-card--glass" data-tilt>
-                    <div class="stat-card__header">
-                        <div class="stat-card__icon stat-card__icon--red">
-                            <i class="fas fa-skull-crossbones"></i>
-                        </div>
-                        <span class="stat-card__trend stat-card__trend--down">
-                            <i class="fas fa-arrow-down"></i> 8%
-                        </span>
-                    </div>
-                    <div class="stat-card__value" data-target="156">0</div>
-                    <div class="stat-card__label">Hazardous Materials</div>
-                    <div class="stat-card__bar">
-                        <div class="stat-card__bar-fill stat-card__bar-fill--red" style="width: 35%"></div>
-                    </div>
-                </div>
-
-                <div class="stat-card stat-card--glass" data-tilt>
-                    <div class="stat-card__header">
-                        <div class="stat-card__icon stat-card__icon--green">
-                            <i class="fas fa-recycle"></i>
-                        </div>
-                        <span class="stat-card__trend stat-card__trend--up">
-                            <i class="fas fa-arrow-up"></i> 24%
-                        </span>
-                    </div>
-                    <div class="stat-card__value" data-target="1203">0</div>
-                    <div class="stat-card__label">Recycled This Month</div>
-                    <div class="stat-card__bar">
-                        <div class="stat-card__bar-fill stat-card__bar-fill--green" style="width: 62%"></div>
-                    </div>
-                </div>
-
-                <div class="stat-card stat-card--glass" data-tilt>
-                    <div class="stat-card__header">
-                        <div class="stat-card__icon stat-card__icon--purple">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <span class="stat-card__trend stat-card__trend--up">
-                            <i class="fas fa-arrow-up"></i> 5%
-                        </span>
-                    </div>
-                    <div class="stat-card__value">98%</div>
-                    <div class="stat-card__label">Compliance Rate</div>
-                    <div class="stat-card__bar">
-                        <div class="stat-card__bar-fill stat-card__bar-fill--purple" style="width: 98%"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Main Charts -->
-            <div class="charts-section">
-                <!-- Waste Distribution -->
-                <div class="chart-card chart-card--large">
-                    <div class="chart-card__header">
-                        <div class="chart-card__title">
-                            <h3>Waste Distribution</h3>
-                            <p>By category across all facilities</p>
-                        </div>
-                        <div class="chart-card__actions">
-                            <button class="chart-card__action active">Week</button>
-                            <button class="chart-card__action">Month</button>
-                            <button class="chart-card__action">Year</button>
-                        </div>
-                    </div>
-                    <div class="chart-card__body">
-                        <div class="donut-chart">
-                            <svg viewBox="0 0 200 200">
-                                <defs>
-                                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#DC2626;stop-opacity:1" />
-                                    </linearGradient>
-                                    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
-                                    </linearGradient>
-                                    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#16A34A;stop-opacity:1" />
-                                    </linearGradient>
-                                    <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" style="stop-color:#A855F7;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#9333EA;stop-opacity:1" />
-                                    </linearGradient>
-                                </defs>
-                                <circle class="donut-ring" cx="100" cy="100" r="70" fill="none" stroke="#1E293B" stroke-width="24"/>
-                                <circle class="donut-segment donut-segment--red" cx="100" cy="100" r="70" fill="none" stroke="url(#grad1)" stroke-width="24" stroke-dasharray="55 385" stroke-dashoffset="0" transform="rotate(-90 100 100)"/>
-                                <circle class="donut-segment donut-segment--blue" cx="100" cy="100" r="70" fill="none" stroke="url(#grad2)" stroke-width="24" stroke-dasharray="130 310" stroke-dashoffset="-55" transform="rotate(-90 100 100)"/>
-                                <circle class="donut-segment donut-segment--green" cx="100" cy="100" r="70" fill="none" stroke="url(#grad3)" stroke-width="24" stroke-dasharray="110 330" stroke-dashoffset="-185" transform="rotate(-90 100 100)"/>
-                                <circle class="donut-segment donut-segment--purple" cx="100" cy="100" r="70" fill="none" stroke="url(#grad4)" stroke-width="24" stroke-dasharray="95 345" stroke-dashoffset="-295" transform="rotate(-90 100 100)"/>
-                            </svg>
-                            <div class="donut-chart__center">
-                                <span class="donut-chart__value">2,847</span>
-                                <span class="donut-chart__label">Total Waste</span>
+                    <div class="hero-section__visual">
+                        <div class="hero-card hero-card--main">
+                            <div class="hero-card__icon">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div class="hero-card__content">
+                                <span class="hero-card__label">Eco Score</span>
+                                <span class="hero-card__value">92<span>/100</span></span>
+                            </div>
+                            <div class="hero-card__chart">
+                                <svg viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="8"/>
+                                    <circle cx="50" cy="50" r="40" fill="none" stroke="url(#heroGrad)" stroke-width="8" 
+                                        stroke-dasharray="230 251" stroke-dashoffset="0" transform="rotate(-90 50 50)"
+                                        class="hero-card__progress"/>
+                                    <defs>
+                                        <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" style="stop-color:#10B981"/>
+                                            <stop offset="100%" style="stop-color:#34D399"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
                             </div>
                         </div>
-                        <div class="chart-legend">
-                            <div class="chart-legend__item">
-                                <div class="chart-legend__color chart-legend__color--red"></div>
-                                <div class="chart-legend__info">
-                                    <span class="chart-legend__name">Hazardous</span>
-                                    <span class="chart-legend__value">156 units</span>
-                                </div>
-                                <span class="chart-legend__percent">5.5%</span>
-                            </div>
-                            <div class="chart-legend__item">
-                                <div class="chart-legend__color chart-legend__color--blue"></div>
-                                <div class="chart-legend__info">
-                                    <span class="chart-legend__name">Recyclable</span>
-                                    <span class="chart-legend__value">892 units</span>
-                                </div>
-                                <span class="chart-legend__percent">31.3%</span>
-                            </div>
-                            <div class="chart-legend__item">
-                                <div class="chart-legend__color chart-legend__color--green"></div>
-                                <div class="chart-legend__info">
-                                    <span class="chart-legend__name">Organic</span>
-                                    <span class="chart-legend__value">743 units</span>
-                                </div>
-                                <span class="chart-legend__percent">26.1%</span>
-                            </div>
-                            <div class="chart-legend__item">
-                                <div class="chart-legend__color chart-legend__color--purple"></div>
-                                <div class="chart-legend__info">
-                                    <span class="chart-legend__name">Ordinary</span>
-                                    <span class="chart-legend__value">1,056 units</span>
-                                </div>
-                                <span class="chart-legend__percent">37.1%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Trend Chart -->
-                <div class="chart-card">
-                    <div class="chart-card__header">
-                        <div class="chart-card__title">
-                            <h3>Monthly Trend</h3>
-                            <p>Waste collection over time</p>
-                        </div>
-                    </div>
-                    <div class="chart-card__body">
-                        <div class="area-chart">
-                            <div class="area-chart__grid">
-                                <span>500</span>
-                                <span>400</span>
-                                <span>300</span>
-                                <span>200</span>
-                                <span>100</span>
-                                <span>0</span>
-                            </div>
-                            <div class="area-chart__bars">
-                                <div class="area-chart__bar-group">
-                                    <div class="area-chart__bar" data-value="280" style="height: 56%">
-                                        <span class="area-chart__tooltip">280</span>
-                                    </div>
-                                    <span class="area-chart__label">Jan</span>
-                                </div>
-                                <div class="area-chart__bar-group">
-                                    <div class="area-chart__bar" data-value="345" style="height: 69%">
-                                        <span class="area-chart__tooltip">345</span>
-                                    </div>
-                                    <span class="area-chart__label">Feb</span>
-                                </div>
-                                <div class="area-chart__bar-group">
-                                    <div class="area-chart__bar" data-value="267" style="height: 53%">
-                                        <span class="area-chart__tooltip">267</span>
-                                    </div>
-                                    <span class="area-chart__label">Mar</span>
-                                </div>
-                                <div class="area-chart__bar-group">
-                                    <div class="area-chart__bar" data-value="412" style="height: 82%">
-                                        <span class="area-chart__tooltip">412</span>
-                                    </div>
-                                    <span class="area-chart__label">Apr</span>
-                                </div>
-                                <div class="area-chart__bar-group">
-                                    <div class="area-chart__bar" data-value="334" style="height: 67%">
-                                        <span class="area-chart__tooltip">334</span>
-                                    </div>
-                                    <span class="area-chart__label">May</span>
-                                </div>
-                                <div class="area-chart__bar-group">
-                                    <div class="area-chart__bar area-chart__bar--highlight" data-value="456" style="height: 91%">
-                                        <span class="area-chart__tooltip">456</span>
-                                    </div>
-                                    <span class="area-chart__label">Jun</span>
-                                </div>
-                                <div class="area-chart__bar-group">
-                                    <div class="area-chart__bar" data-value="312" style="height: 62%">
-                                        <span class="area-chart__tooltip">312</span>
-                                    </div>
-                                    <span class="area-chart__label">Jul</span>
-                                </div>
-                                <div class="area-chart__bar-group">
-                                    <div class="area-chart__bar" data-value="389" style="height: 78%">
-                                        <span class="area-chart__tooltip">389</span>
-                                    </div>
-                                    <span class="area-chart__label">Aug</span>
-                                </div>
-                                <div class="area-chart__bar-group">
-                                    <div class="area-chart__bar area-chart__bar--current" data-value="245" style="height: 49%">
-                                        <span class="area-chart__tooltip">245</span>
-                                    </div>
-                                    <span class="area-chart__label">Sep</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Facility Images & Activity -->
-            <div class="content-grid">
-                <!-- Facility Gallery -->
-                <div class="gallery-card">
-                    <div class="gallery-card__header">
-                        <h3><i class="fas fa-images"></i> Facility Overview</h3>
-                        <a href="#" class="gallery-card__see-all">View All</a>
-                    </div>
-                    <div class="gallery-card__grid">
-                        <div class="gallery-card__item gallery-card__item--large">
-                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop" alt="Laboratory">
-                            <div class="gallery-card__overlay">
-                                <span class="gallery-card__tag gallery-card__tag--red">Hazardous Zone</span>
-                                <span class="gallery-card__title">Chemical Laboratory</span>
-                            </div>
-                        </div>
-                        <div class="gallery-card__item">
-                            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=300&h=200&fit=crop" alt="Workshop">
-                            <div class="gallery-card__overlay">
-                                <span class="gallery-card__tag gallery-card__tag--blue">Active</span>
-                                <span class="gallery-card__title">Mining Workshop</span>
-                            </div>
-                        </div>
-                        <div class="gallery-card__item">
-                            <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=300&h=200&fit=crop" alt="Field">
-                            <div class="gallery-card__overlay">
-                                <span class="gallery-card__tag gallery-card__tag--green">Normal</span>
-                                <span class="gallery-card__title">Field Practice Area</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Activity Feed -->
-                <div class="activity-card">
-                    <div class="activity-card__header">
-                        <h3><i class="fas fa-stream"></i> Recent Activity</h3>
-                        <a href="#" class="activity-card__see-all">See All</a>
-                    </div>
-                    <div class="activity-card__body">
-                        <div class="activity-item" data-aos="fade-up">
-                            <div class="activity-item__icon activity-item__icon--danger">
-                                <i class="fas fa-flask"></i>
-                            </div>
-                            <div class="activity-item__content">
-                                <span class="activity-item__title">Hazardous waste registered</span>
-                                <span class="activity-item__desc">Exhausted solvent - Chemical Lab</span>
-                            </div>
-                            <span class="activity-item__time">15 min ago</span>
-                        </div>
-                        <div class="activity-item" data-aos="fade-up" data-aos-delay="100">
-                            <div class="activity-item__icon activity-item__icon--success">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                            <div class="activity-item__content">
-                                <span class="activity-item__title">Collection completed</span>
-                                <span class="activity-item__desc">Blue container - Admin Area</span>
-                            </div>
-                            <span class="activity-item__time">1 hour ago</span>
-                        </div>
-                        <div class="activity-item" data-aos="fade-up" data-aos-delay="200">
-                            <div class="activity-item__icon activity-item__icon--warning">
+                        <div class="hero-card hero-card--small hero-card--alerts">
+                            <div class="hero-card__icon hero-card__icon--warning">
                                 <i class="fas fa-exclamation-triangle"></i>
                             </div>
-                            <div class="activity-item__content">
-                                <span class="activity-item__title">Capacity alert</span>
-                                <span class="activity-item__desc">Red container at 85% - Workshop</span>
+                            <div class="hero-card__content">
+                                <span class="hero-card__label">Active Alerts</span>
+                                <span class="hero-card__value">3</span>
                             </div>
-                            <span class="activity-item__time">2 hours ago</span>
                         </div>
-                        <div class="activity-item" data-aos="fade-up" data-aos-delay="300">
-                            <div class="activity-item__icon activity-item__icon--info">
-                                <i class="fas fa-file-alt"></i>
+                        <div class="hero-card hero-card--small hero-card--collection">
+                            <div class="hero-card__icon hero-card__icon--info">
+                                <i class="fas fa-truck"></i>
                             </div>
-                            <div class="activity-item__content">
-                                <span class="activity-item__title">Report generated</span>
-                                <span class="activity-item__desc">Monthly report - August 2026</span>
+                            <div class="hero-card__content">
+                                <span class="hero-card__label">Next Collection</span>
+                                <span class="hero-card__value">8:00 AM</span>
                             </div>
-                            <span class="activity-item__time">3 hours ago</span>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Container Status -->
-            <div class="containers-section">
-                <div class="containers-section__header">
-                    <h3><i class="fas fa-dumpster"></i> Container Status</h3>
-                    <span class="containers-section__update">
-                        <i class="fas fa-sync-alt"></i>
-                        Last update: Today 10:30 AM
-                    </span>
+                <div class="hero-section__bg">
+                    <div class="hero-section__circle hero-section__circle--1"></div>
+                    <div class="hero-section__circle hero-section__circle--2"></div>
+                    <div class="hero-section__circle hero-section__circle--3"></div>
                 </div>
-                <div class="containers-grid">
-                    <div class="container-card container-card--danger">
-                        <div class="container-card__header">
-                            <div class="container-card__icon">
-                                <i class="fas fa-skull-crossbones"></i>
-                            </div>
-                            <div class="container-card__status">
-                                <span class="container-card__status-dot container-card__status-dot--danger"></span>
-                                <span>Critical</span>
-                            </div>
-                        </div>
-                        <div class="container-card__body">
-                            <h4>Hazardous Waste</h4>
-                            <p>Chemical Laboratory</p>
-                            <div class="container-card__bar">
-                                <div class="container-card__bar-fill" style="width: 85%">
-                                    <span>85%</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container-card__footer">
-                            <span><i class="fas fa-map-marker-alt"></i> Lab Building</span>
-                            <button class="container-card__btn">Collect Now</button>
-                        </div>
-                    </div>
+            </section>
 
-                    <div class="container-card container-card--info">
-                        <div class="container-card__header">
-                            <div class="container-card__icon">
-                                <i class="fas fa-recycle"></i>
-                            </div>
-                            <div class="container-card__status">
-                                <span class="container-card__status-dot container-card__status-dot--warning"></span>
-                                <span>Warning</span>
-                            </div>
-                        </div>
-                        <div class="container-card__body">
-                            <h4>Recyclable Waste</h4>
-                            <p>Admin Area</p>
-                            <div class="container-card__bar">
-                                <div class="container-card__bar-fill container-card__bar-fill--blue" style="width: 62%">
-                                    <span>62%</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container-card__footer">
-                            <span><i class="fas fa-map-marker-alt"></i> Main Building</span>
-                            <button class="container-card__btn">Schedule</button>
-                        </div>
-                    </div>
-
-                    <div class="container-card container-card--success">
-                        <div class="container-card__header">
-                            <div class="container-card__icon">
-                                <i class="fas fa-leaf"></i>
-                            </div>
-                            <div class="container-card__status">
-                                <span class="container-card__status-dot container-card__status-dot--success"></span>
-                                <span>Normal</span>
-                            </div>
-                        </div>
-                        <div class="container-card__body">
-                            <h4>Organic Waste</h4>
-                            <p>Cafeteria</p>
-                            <div class="container-card__bar">
-                                <div class="container-card__bar-fill container-card__bar-fill--green" style="width: 45%">
-                                    <span>45%</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container-card__footer">
-                            <span><i class="fas fa-map-marker-alt"></i> Cafeteria</span>
-                            <button class="container-card__btn">Schedule</button>
-                        </div>
-                    </div>
-
-                    <div class="container-card container-card--secondary">
-                        <div class="container-card__header">
-                            <div class="container-card__icon">
+            <!-- Stats Grid -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card stat-card--blue" data-animate>
+                        <div class="stat-card__glow"></div>
+                        <div class="stat-card__header">
+                            <div class="stat-card__icon">
                                 <i class="fas fa-trash-alt"></i>
                             </div>
-                            <div class="container-card__status">
-                                <span class="container-card__status-dot container-card__status-dot--success"></span>
-                                <span>Normal</span>
+                            <div class="stat-card__trend stat-card__trend--up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+12.5%</span>
                             </div>
                         </div>
-                        <div class="container-card__body">
-                            <h4>Ordinary Waste</h4>
-                            <p>Main Patio</p>
-                            <div class="container-card__bar">
-                                <div class="container-card__bar-fill container-card__bar-fill--gray" style="width: 38%">
-                                    <span>38%</span>
-                                </div>
+                        <div class="stat-card__body">
+                            <span class="stat-card__value" data-target="2847">0</span>
+                            <span class="stat-card__label">Total Waste Registered</span>
+                        </div>
+                        <div class="stat-card__footer">
+                            <div class="stat-card__bar">
+                                <div class="stat-card__bar-fill" data-width="75"></div>
+                            </div>
+                            <span class="stat-card__footer-label">75% of monthly target</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card stat-card--red" data-animate>
+                        <div class="stat-card__glow"></div>
+                        <div class="stat-card__header">
+                            <div class="stat-card__icon">
+                                <i class="fas fa-skull-crossbones"></i>
+                            </div>
+                            <div class="stat-card__trend stat-card__trend--down">
+                                <i class="fas fa-arrow-down"></i>
+                                <span>-8.3%</span>
                             </div>
                         </div>
-                        <div class="container-card__footer">
-                            <span><i class="fas fa-map-marker-alt"></i> Main Patio</span>
-                            <button class="container-card__btn">Schedule</button>
+                        <div class="stat-card__body">
+                            <span class="stat-card__value" data-target="156">0</span>
+                            <span class="stat-card__label">Hazardous Materials</span>
+                        </div>
+                        <div class="stat-card__footer">
+                            <div class="stat-card__bar">
+                                <div class="stat-card__bar-fill" data-width="35"></div>
+                            </div>
+                            <span class="stat-card__footer-label">35% of monthly limit</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card stat-card--green" data-animate>
+                        <div class="stat-card__glow"></div>
+                        <div class="stat-card__header">
+                            <div class="stat-card__icon">
+                                <i class="fas fa-recycle"></i>
+                            </div>
+                            <div class="stat-card__trend stat-card__trend--up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+24.2%</span>
+                            </div>
+                        </div>
+                        <div class="stat-card__body">
+                            <span class="stat-card__value" data-target="1203">0</span>
+                            <span class="stat-card__label">Recycled This Month</span>
+                        </div>
+                        <div class="stat-card__footer">
+                            <div class="stat-card__bar">
+                                <div class="stat-card__bar-fill" data-width="62"></div>
+                            </div>
+                            <span class="stat-card__footer-label">62% recycling rate</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card stat-card--purple" data-animate>
+                        <div class="stat-card__glow"></div>
+                        <div class="stat-card__header">
+                            <div class="stat-card__icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-card__trend stat-card__trend--up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+5.1%</span>
+                            </div>
+                        </div>
+                        <div class="stat-card__body">
+                            <span class="stat-card__value">98<span class="stat-card__unit">%</span></span>
+                            <span class="stat-card__label">Compliance Rate</span>
+                        </div>
+                        <div class="stat-card__footer">
+                            <div class="stat-card__bar">
+                                <div class="stat-card__bar-fill" data-width="98"></div>
+                            </div>
+                            <span class="stat-card__footer-label">Exceeds target</span>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            <!-- Main Content Grid -->
+            <section class="content-section">
+                <div class="content-grid">
+                    <!-- Analytics Chart -->
+                    <div class="card card--large">
+                        <div class="card__header">
+                            <div class="card__title">
+                                <h3>Waste Analytics</h3>
+                                <p>Monthly distribution by category</p>
+                            </div>
+                            <div class="card__actions">
+                                <button class="card__action active">Week</button>
+                                <button class="card__action">Month</button>
+                                <button class="card__action">Year</button>
+                            </div>
+                        </div>
+                        <div class="card__body">
+                            <div class="analytics-chart">
+                                <div class="analytics-chart__bars">
+                                    <div class="analytics-chart__group">
+                                        <div class="analytics-chart__bar" data-value="65" data-color="#EF4444">
+                                            <span class="analytics-chart__tooltip">65</span>
+                                        </div>
+                                        <span class="analytics-chart__label">Mon</span>
+                                    </div>
+                                    <div class="analytics-chart__group">
+                                        <div class="analytics-chart__bar" data-value="85" data-color="#3B82F6">
+                                            <span class="analytics-chart__tooltip">85</span>
+                                        </div>
+                                        <span class="analytics-chart__label">Tue</span>
+                                    </div>
+                                    <div class="analytics-chart__group">
+                                        <div class="analytics-chart__bar" data-value="45" data-color="#22C55E">
+                                            <span class="analytics-chart__tooltip">45</span>
+                                        </div>
+                                        <span class="analytics-chart__label">Wed</span>
+                                    </div>
+                                    <div class="analytics-chart__group">
+                                        <div class="analytics-chart__bar" data-value="95" data-color="#A855F7">
+                                            <span class="analytics-chart__tooltip">95</span>
+                                        </div>
+                                        <span class="analytics-chart__label">Thu</span>
+                                    </div>
+                                    <div class="analytics-chart__group">
+                                        <div class="analytics-chart__bar" data-value="70" data-color="#F59E0B">
+                                            <span class="analytics-chart__tooltip">70</span>
+                                        </div>
+                                        <span class="analytics-chart__label">Fri</span>
+                                    </div>
+                                    <div class="analytics-chart__group">
+                                        <div class="analytics-chart__bar analytics-chart__bar--highlight" data-value="110" data-color="#10B981">
+                                            <span class="analytics-chart__tooltip">110</span>
+                                        </div>
+                                        <span class="analytics-chart__label">Sat</span>
+                                    </div>
+                                    <div class="analytics-chart__group">
+                                        <div class="analytics-chart__bar" data-value="30" data-color="#6B7280">
+                                            <span class="analytics-chart__tooltip">30</span>
+                                        </div>
+                                        <span class="analytics-chart__label">Sun</span>
+                                    </div>
+                                </div>
+                                <div class="analytics-chart__legend">
+                                    <div class="analytics-chart__legend-item">
+                                        <span class="analytics-chart__legend-color" style="background: #EF4444"></span>
+                                        <span>Hazardous</span>
+                                    </div>
+                                    <div class="analytics-chart__legend-item">
+                                        <span class="analytics-chart__legend-color" style="background: #3B82F6"></span>
+                                        <span>Recyclable</span>
+                                    </div>
+                                    <div class="analytics-chart__legend-item">
+                                        <span class="analytics-chart__legend-color" style="background: #22C55E"></span>
+                                        <span>Organic</span>
+                                    </div>
+                                    <div class="analytics-chart__legend-item">
+                                        <span class="analytics-chart__legend-color" style="background: #A855F7"></span>
+                                        <span>Ordinary</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Activity Feed -->
+                    <div class="card">
+                        <div class="card__header">
+                            <div class="card__title">
+                                <h3>Recent Activity</h3>
+                                <p>Latest system events</p>
+                            </div>
+                            <a href="#" class="card__link">View All</a>
+                        </div>
+                        <div class="card__body">
+                            <div class="activity-feed">
+                                <div class="activity-feed__item" data-animate>
+                                    <div class="activity-feed__icon activity-feed__icon--danger">
+                                        <i class="fas fa-flask"></i>
+                                    </div>
+                                    <div class="activity-feed__content">
+                                        <span class="activity-feed__title">Hazardous waste registered</span>
+                                        <span class="activity-feed__desc">Exhausted solvent - Chemical Lab</span>
+                                    </div>
+                                    <span class="activity-feed__time">15m ago</span>
+                                </div>
+                                <div class="activity-feed__item" data-animate>
+                                    <div class="activity-feed__icon activity-feed__icon--success">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div class="activity-feed__content">
+                                        <span class="activity-feed__title">Collection completed</span>
+                                        <span class="activity-feed__desc">Blue container - Admin Area</span>
+                                    </div>
+                                    <span class="activity-feed__time">1h ago</span>
+                                </div>
+                                <div class="activity-feed__item" data-animate>
+                                    <div class="activity-feed__icon activity-feed__icon--warning">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="activity-feed__content">
+                                        <span class="activity-feed__title">Capacity alert triggered</span>
+                                        <span class="activity-feed__desc">Red container at 85%</span>
+                                    </div>
+                                    <span class="activity-feed__time">2h ago</span>
+                                </div>
+                                <div class="activity-feed__item" data-animate>
+                                    <div class="activity-feed__icon activity-feed__icon--info">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                    <div class="activity-feed__content">
+                                        <span class="activity-feed__title">New user registered</span>
+                                        <span class="activity-feed__desc">Trainee - Mining Program</span>
+                                    </div>
+                                    <span class="activity-feed__time">3h ago</span>
+                                </div>
+                                <div class="activity-feed__item" data-animate>
+                                    <div class="activity-feed__icon activity-feed__icon--purple">
+                                        <i class="fas fa-file-alt"></i>
+                                    </div>
+                                    <div class="activity-feed__content">
+                                        <span class="activity-feed__title">Report generated</span>
+                                        <span class="activity-feed__desc">Monthly report - August 2026</span>
+                                    </div>
+                                    <span class="activity-feed__time">5h ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Facility Gallery -->
+            <section class="gallery-section">
+                <div class="card">
+                    <div class="card__header">
+                        <div class="card__title">
+                            <h3><i class="fas fa-building"></i> Facility Overview</h3>
+                            <p>Monitored areas across the campus</p>
+                        </div>
+                        <a href="#" class="card__link">View All Facilities</a>
+                    </div>
+                    <div class="card__body">
+                        <div class="facility-gallery">
+                            <div class="facility-card facility-card--large">
+                                <div class="facility-card__image">
+                                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop" alt="Laboratory">
+                                    <div class="facility-card__overlay"></div>
+                                </div>
+                                <div class="facility-card__content">
+                                    <div class="facility-card__status facility-card__status--warning">
+                                        <span class="facility-card__status-dot"></span>
+                                        Warning
+                                    </div>
+                                    <h4>Chemical Laboratory</h4>
+                                    <p>Building A - 2nd Floor</p>
+                                    <div class="facility-card__stats">
+                                        <span><i class="fas fa-trash"></i> 45 units</span>
+                                        <span><i class="fas fa-clock"></i> 2h ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="facility-card">
+                                <div class="facility-card__image">
+                                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&h=300&fit=crop" alt="Workshop">
+                                    <div class="facility-card__overlay"></div>
+                                </div>
+                                <div class="facility-card__content">
+                                    <div class="facility-card__status facility-card__status--danger">
+                                        <span class="facility-card__status-dot"></span>
+                                        Critical
+                                    </div>
+                                    <h4>Mining Workshop</h4>
+                                    <p>Building B - Ground Floor</p>
+                                </div>
+                            </div>
+                            <div class="facility-card">
+                                <div class="facility-card__image">
+                                    <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400&h=300&fit=crop" alt="Field">
+                                    <div class="facility-card__overlay"></div>
+                                </div>
+                                <div class="facility-card__content">
+                                    <div class="facility-card__status facility-card__status--success">
+                                        <span class="facility-card__status-dot"></span>
+                                        Normal
+                                    </div>
+                                    <h4>Field Practice Area</h4>
+                                    <p>Outdoor Zone</p>
+                                </div>
+                            </div>
+                            <div class="facility-card">
+                                <div class="facility-card__image">
+                                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop" alt="Admin">
+                                    <div class="facility-card__overlay"></div>
+                                </div>
+                                <div class="facility-card__content">
+                                    <div class="facility-card__status facility-card__status--success">
+                                        <span class="facility-card__status-dot"></span>
+                                        Normal
+                                    </div>
+                                    <h4>Administrative Area</h4>
+                                    <p>Main Building</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Container Status -->
+            <section class="containers-section">
+                <div class="card">
+                    <div class="card__header">
+                        <div class="card__title">
+                            <h3><i class="fas fa-dumpster"></i> Container Status</h3>
+                            <p>Real-time monitoring of all containers</p>
+                        </div>
+                        <div class="card__update">
+                            <i class="fas fa-sync-alt"></i>
+                            Updated: Today 10:30 AM
+                        </div>
+                    </div>
+                    <div class="card__body">
+                        <div class="containers-grid">
+                            <div class="container-tile container-tile--danger">
+                                <div class="container-tile__header">
+                                    <div class="container-tile__icon">
+                                        <i class="fas fa-skull-crossbones"></i>
+                                    </div>
+                                    <div class="container-tile__status">
+                                        <span class="container-tile__pulse"></span>
+                                        <span>Critical</span>
+                                    </div>
+                                </div>
+                                <div class="container-tile__body">
+                                    <h4>Hazardous Waste</h4>
+                                    <p>Chemical Laboratory</p>
+                                </div>
+                                <div class="container-tile__progress">
+                                    <div class="container-tile__progress-bar">
+                                        <div class="container-tile__progress-fill" data-width="85"></div>
+                                    </div>
+                                    <div class="container-tile__progress-info">
+                                        <span>85% Full</span>
+                                        <span>170/200 L</span>
+                                    </div>
+                                </div>
+                                <div class="container-tile__footer">
+                                    <span><i class="fas fa-map-pin"></i> Lab Building</span>
+                                    <button class="container-tile__btn">Collect</button>
+                                </div>
+                            </div>
+
+                            <div class="container-tile container-tile--info">
+                                <div class="container-tile__header">
+                                    <div class="container-tile__icon">
+                                        <i class="fas fa-recycle"></i>
+                                    </div>
+                                    <div class="container-tile__status">
+                                        <span class="container-tile__pulse container-tile__pulse--warning"></span>
+                                        <span>Warning</span>
+                                    </div>
+                                </div>
+                                <div class="container-tile__body">
+                                    <h4>Recyclable Waste</h4>
+                                    <p>Admin Area</p>
+                                </div>
+                                <div class="container-tile__progress">
+                                    <div class="container-tile__progress-bar">
+                                        <div class="container-tile__progress-fill container-tile__progress-fill--blue" data-width="62"></div>
+                                    </div>
+                                    <div class="container-tile__progress-info">
+                                        <span>62% Full</span>
+                                        <span>186/300 L</span>
+                                    </div>
+                                </div>
+                                <div class="container-tile__footer">
+                                    <span><i class="fas fa-map-pin"></i> Main Building</span>
+                                    <button class="container-tile__btn">Schedule</button>
+                                </div>
+                            </div>
+
+                            <div class="container-tile container-tile--success">
+                                <div class="container-tile__header">
+                                    <div class="container-tile__icon">
+                                        <i class="fas fa-leaf"></i>
+                                    </div>
+                                    <div class="container-tile__status">
+                                        <span class="container-tile__pulse container-tile__pulse--success"></span>
+                                        <span>Normal</span>
+                                    </div>
+                                </div>
+                                <div class="container-tile__body">
+                                    <h4>Organic Waste</h4>
+                                    <p>Cafeteria</p>
+                                </div>
+                                <div class="container-tile__progress">
+                                    <div class="container-tile__progress-bar">
+                                        <div class="container-tile__progress-fill container-tile__progress-fill--green" data-width="45"></div>
+                                    </div>
+                                    <div class="container-tile__progress-info">
+                                        <span>45% Full</span>
+                                        <span>90/200 L</span>
+                                    </div>
+                                </div>
+                                <div class="container-tile__footer">
+                                    <span><i class="fas fa-map-pin"></i> Cafeteria</span>
+                                    <button class="container-tile__btn">Schedule</button>
+                                </div>
+                            </div>
+
+                            <div class="container-tile container-tile--gray">
+                                <div class="container-tile__header">
+                                    <div class="container-tile__icon">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </div>
+                                    <div class="container-tile__status">
+                                        <span class="container-tile__pulse container-tile__pulse--success"></span>
+                                        <span>Normal</span>
+                                    </div>
+                                </div>
+                                <div class="container-tile__body">
+                                    <h4>Ordinary Waste</h4>
+                                    <p>Main Patio</p>
+                                </div>
+                                <div class="container-tile__progress">
+                                    <div class="container-tile__progress-bar">
+                                        <div class="container-tile__progress-fill container-tile__progress-fill--gray" data-width="38"></div>
+                                    </div>
+                                    <div class="container-tile__progress-info">
+                                        <span>38% Full</span>
+                                        <span>76/200 L</span>
+                                    </div>
+                                </div>
+                                <div class="container-tile__footer">
+                                    <span><i class="fas fa-map-pin"></i> Main Patio</span>
+                                    <button class="container-tile__btn">Schedule</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <!-- Quick Actions -->
-            <div class="actions-section">
-                <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
-                <div class="actions-grid">
-                    <button class="action-card action-card--primary">
-                        <div class="action-card__icon">
-                            <i class="fas fa-plus-circle"></i>
+            <section class="actions-section">
+                <div class="card">
+                    <div class="card__header">
+                        <div class="card__title">
+                            <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                            <p>Frequently used operations</p>
                         </div>
-                        <span class="action-card__title">New Registration</span>
-                        <span class="action-card__desc">Register new waste entry</span>
-                    </button>
-                    <button class="action-card action-card--success">
-                        <div class="action-card__icon">
-                            <i class="fas fa-file-export"></i>
+                    </div>
+                    <div class="card__body">
+                        <div class="actions-grid">
+                            <button class="action-tile action-tile--blue">
+                                <div class="action-tile__icon">
+                                    <i class="fas fa-plus-circle"></i>
+                                </div>
+                                <div class="action-tile__content">
+                                    <span class="action-tile__title">New Registration</span>
+                                    <span class="action-tile__desc">Register waste entry</span>
+                                </div>
+                                <i class="fas fa-arrow-right action-tile__arrow"></i>
+                            </button>
+                            <button class="action-tile action-tile--green">
+                                <div class="action-tile__icon">
+                                    <i class="fas fa-file-export"></i>
+                                </div>
+                                <div class="action-tile__content">
+                                    <span class="action-tile__title">Generate Report</span>
+                                    <span class="action-tile__desc">Create monthly report</span>
+                                </div>
+                                <i class="fas fa-arrow-right action-tile__arrow"></i>
+                            </button>
+                            <button class="action-tile action-tile--orange">
+                                <div class="action-tile__icon">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div class="action-tile__content">
+                                    <span class="action-tile__title">Schedule Pickup</span>
+                                    <span class="action-tile__desc">Plan waste collection</span>
+                                </div>
+                                <i class="fas fa-arrow-right action-tile__arrow"></i>
+                            </button>
+                            <button class="action-tile action-tile--purple">
+                                <div class="action-tile__icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="action-tile__content">
+                                    <span class="action-tile__title">Training</span>
+                                    <span class="action-tile__desc">Schedule training session</span>
+                                </div>
+                                <i class="fas fa-arrow-right action-tile__arrow"></i>
+                            </button>
                         </div>
-                        <span class="action-card__title">Generate Report</span>
-                        <span class="action-card__desc">Create monthly report</span>
-                    </button>
-                    <button class="action-card action-card--warning">
-                        <div class="action-card__icon">
-                            <i class="fas fa-calendar-check"></i>
-                        </div>
-                        <span class="action-card__title">Schedule Collection</span>
-                        <span class="action-card__desc">Plan waste pickup</span>
-                    </button>
-                    <button class="action-card action-card--purple">
-                        <div class="action-card__icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <span class="action-card__title">Training Session</span>
-                        <span class="action-card__desc">Schedule training</span>
-                    </button>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
     </main>
 
-    <!-- Notification Toast -->
+    <!-- Toast Notification -->
     <div class="toast" id="toast">
-        <div class="toast__icon">
-            <i class="fas fa-check-circle"></i>
-        </div>
+        <div class="toast__icon"><i class="fas fa-check-circle"></i></div>
         <div class="toast__content">
             <span class="toast__title">Success</span>
-            <span class="toast__message">Action completed successfully</span>
+            <span class="toast__message">Action completed</span>
         </div>
-        <button class="toast__close" id="toastClose">
-            <i class="fas fa-times"></i>
-        </button>
+        <button class="toast__close"><i class="fas fa-times"></i></button>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader__content">
+            <div class="loader__icon">
+                <i class="fas fa-leaf"></i>
+            </div>
+            <div class="loader__text">Loading...</div>
+            <div class="loader__bar">
+                <div class="loader__bar-fill"></div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
