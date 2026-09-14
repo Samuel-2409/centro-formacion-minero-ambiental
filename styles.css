@@ -802,7 +802,8 @@ body {
 }
 
 @keyframes progressDraw {
-    from { stroke-dashoffset: 251; }
+    from { stroke-dashoffset: 251.3; }
+    to { stroke-dashoffset: 0; }
 }
 
 .hero-card--small {
@@ -1632,6 +1633,11 @@ body {
     .facility-card--large { grid-row: span 1; }
 }
 
+@media (max-width: 900px) {
+    .content-grid { gap: 16px; }
+    .facility-gallery { gap: 12px; }
+}
+
 @media (max-width: 768px) {
     .sidebar { transform: translateX(-100%); }
     .sidebar.mobile-open { transform: translateX(0); }
@@ -1642,9 +1648,9 @@ body {
     
     .stats-grid, .containers-grid, .actions-grid { grid-template-columns: 1fr; }
     
-    .hero-section { padding: 32px; }
-    .hero-section__content { flex-direction: column; gap: 32px; }
-    .hero-section__title { font-size: 2rem; }
+    .hero-section { padding: 24px; }
+    .hero-section__content { flex-direction: column; gap: 24px; }
+    .hero-section__title { font-size: 1.8rem; }
     .hero-section__visual { width: 100%; height: auto; }
     .hero-card--main { position: relative; width: 100%; }
     .hero-card--small { position: relative; width: 100%; top: auto; right: auto; bottom: auto; }

@@ -81,7 +81,7 @@ function initParticleCanvas() {
     function init() {
         resize();
         particles = [];
-        const count = Math.min(80, Math.floor((canvas.width * canvas.height) / 15000));
+        const count = Math.min(50, Math.floor((canvas.width * canvas.height) / 20000));
         for (let i = 0; i < count; i++) {
             particles.push(new Particle());
         }
@@ -257,11 +257,13 @@ function initProgressBars() {
    ======================================== */
 function initChartBars() {
     const bars = document.querySelectorAll('.analytics-chart__bar');
+    const values = Array.from(bars).map(bar => parseInt(bar.dataset.value));
+    const maxValue = Math.max(...values);
     
     bars.forEach(bar => {
         const value = bar.dataset.value;
         const color = bar.dataset.color;
-        bar.style.height = `${(value / 120) * 100}%`;
+        bar.style.height = `${(value / maxValue) * 100}%`;
         bar.style.background = `linear-gradient(180deg, ${color}, ${color}88)`;
     });
     
