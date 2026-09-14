@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Formación Minero Ambiental - SENA | Gestión de Residuos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header__container">
+            <a href="#inicio" class="header__logo">
+                <div class="header__logo-icon">
+                    <i class="fas fa-hard-hat"></i>
+                    <i class="fas fa-leaf header__logo-leaf"></i>
+                </div>
+                <div class="header__logo-text">
+                    <span class="header__sena">SENA</span>
+                    <span class="header__centro">Centro de Formación<br>Minero Ambiental</span>
+                </div>
+            </a>
+            <nav class="header__nav" id="mainNav">
+                <a href="#inicio" class="header__nav-link active">Inicio</a>
+                <a href="#problema" class="header__nav-link">Problemática</a>
+                <a href="#solucion" class="header__nav-link">Solución</a>
+                <a href="#guia" class="header__nav-link">Guía de Clasificación</a>
+                <a href="#recursos" class="header__nav-link">Recursos</a>
+                <a href="#contacto" class="header__nav-link">Contacto</a>
+            </nav>
+            <button class="header__menu-btn" id="menuBtn" aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero__overlay"></div>
+        <div class="hero__particles" id="particles"></div>
+        <div class="hero__container">
+            <div class="hero__badge">
+                <i class="fas fa-shield-alt"></i>
+                Programa de Gestión Ambiental 2026
+            </div>
+            <h1 class="hero__title">
+                Cada residuo tiene un <span class="hero__highlight">destino correcto</span>.
+                <br>Tu formación empieza con la <span class="hero__highlight">responsabilidad</span>.
+            </h1>
+            <p class="hero__subtitle">
+                Transformamos la manera en que gestionamos los residuos sólidos y peligrosos 
+                generados en nuestros talleres, laboratorios y prácticas de campo.
+            </p>
+            <div class="hero__actions">
+                <a href="#solucion" class="btn btn--primary">
+                    <i class="fas fa-recycle"></i> Conoce nuestra solución
+                </a>
+                <a href="#guia" class="btn btn--outline">
+                    <i class="fas fa-book-open"></i> Ver guía rápida
+                </a>
+            </div>
+            <div class="hero__stats">
+                <div class="hero__stat">
+                    <span class="hero__stat-number" data-target="850">0</span>
+                    <span class="hero__stat-label">Aprendices formados</span>
+                </div>
+                <div class="hero__stat">
+                    <span class="hero__stat-number" data-target="12">0</span>
+                    <span class="hero__stat-label">Programas activos</span>
+                </div>
+                <div class="hero__stat">
+                    <span class="hero__stat-number" data-target="40">0</span>
+                    <span class="hero__stat-label">% Reducción residuos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problema Section -->
+    <section class="problema" id="problema">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-exclamation-triangle"></i> Problemática Ambiental</span>
+                <h2 class="section-title">El problema que <span class="text-orange">no podemos ignorar</span></h2>
+                <p class="section-desc">En los procesos formativos minero-ambientales se generan residuos que, sin una gestión adecuada, representan un riesgo serio para la salud y el ecosistema.</p>
+            </div>
+            <div class="problema__grid">
+                <div class="problema__card problema__card--danger">
+                    <div class="problema__card-icon"><i class="fas fa-flask"></i></div>
+                    <h3>Residuos Químicos de Laboratorio</h3>
+                    <p>Disolventes agotados, reactivos caducados y soluciones ácido-base que se vierten sin tratamiento previo.</p>
+                    <div class="problema__card-risk"><i class="fas fa-skull-crossbones"></i> Nivel de riesgo: Alto</div>
+                </div>
+                <div class="problema__card problema__card--warning">
+                    <div class="problema__card-icon"><i class="fas fa-gem"></i></div>
+                    <h3>Muestras de Mineral</h3>
+                    <p>Fragmentos de roca con contenido de metales pesados que se disponen en contenedores comunes.</p>
+                    <div class="problema__card-risk"><i class="fas fa-exclamation-circle"></i> Nivel de riesgo: Medio-Alto</div>
+                </div>
+                <div class="problema__card problema__card--danger">
+                    <div class="problema__card-icon"><i class="fas fa-hard-hat"></i></div>
+                    <h3>EPP Contaminado</h3>
+                    <p>Equipos de protección personal usados en zonas de explotación minera con residuos de sustancias tóxicas.</p>
+                    <div class="problema__card-risk"><i class="fas fa-skull-crossbones"></i> Nivel de riesgo: Alto</div>
+                </div>
+                <div class="problema__card problema__card--info">
+                    <div class="problema__card-icon"><i class="fas fa-microchip"></i></div>
+                    <h3>Residuos Electrónicos</h3>
+                    <p>Equipos de laboratorio obsoletos, baterías y componentes con materiales nobles y sustancias peligrosas.</p>
+                    <div class="problema__card-risk"><i class="fas fa-exclamation-circle"></i> Nivel de riesgo: Medio</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solución Section -->
+    <section class="solucion" id="solucion">
+        <div class="container">
+            <div class="section-header section-header--light">
+                <span class="section-tag section-tag--light"><i class="fas fa-lightbulb"></i> Nuestra Propuesta</span>
+                <h2 class="section-title section-title--light">Un sistema de clasificación <span class="text-green">que funciona</span></h2>
+                <p class="section-desc section-desc--light">Implementamos un protocolo de 4 categorías con contenedores codificados por color.</p>
+            </div>
+            <div class="solucion__system">
+                <div class="solucion__container">
+                    <div class="solucion__container-box solucion__container-box--peligroso"><i class="fas fa-skull-crossbones"></i></div>
+                    <div class="solucion__container-info">
+                        <span class="solucion__container-label">Contenedor ROJO</span>
+                        <h3>Residuos Peligrosos</h3>
+                        <p>Reactivos químicos, disolventes, aceites usados, baterías, EPP contaminado.</p>
+                    </div>
+                </div>
+                <div class="solucion__container">
+                    <div class="solucion__container-box solucion__container-box--reciclable"><i class="fas fa-recycle"></i></div>
+                    <div class="solucion__container-info">
+                        <span class="solucion__container-label">Contenedor AZUL</span>
+                        <h3>Residuos Reciclables</h3>
+                        <p>Papel, cartón, plásticos limpios, metales no contaminados, vidrio.</p>
+                    </div>
+                </div>
+                <div class="solucion__container">
+                    <div class="solucion__container-box solucion__container-box--organico"><i class="fas fa-leaf"></i></div>
+                    <div class="solucion__container-info">
+                        <span class="solucion__container-label">Contenedor VERDE</span>
+                        <h3>Residuos Orgánicos</h3>
+                        <p>Restos de materia orgánica de cafetería, jardinería y residuos biodegradables.</p>
+                    </div>
+                </div>
+                <div class="solucion__container">
+                    <div class="solucion__container-box solucion__container-box--ordinario"><i class="fas fa-trash-alt"></i></div>
+                    <div class="solucion__container-info">
+                        <span class="solucion__container-label">Contenedor GRIS</span>
+                        <h3>Residuos Ordinarios</h3>
+                        <p>Servilletas usadas, empaques sucios, material no reciclable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guía Section -->
+    <section class="guia" id="guia">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-book"></i> Guía de Clasificación</span>
+                <h2 class="section-title">¿Qué va en cada <span class="text-green">contenedor</span>?</h2>
+            </div>
+            <div class="guia__grid">
+                <div class="guia__card" data-category="peligroso">
+                    <div class="guia__card-header guia__card-header--peligroso"><i class="fas fa-skull-crossbones"></i><span>PELIGROSO</span></div>
+                    <div class="guia__card-body">
+                        <div class="guia__card-item"><i class="fas fa-flask"></i><span>Reactivos químicos</span></div>
+                        <div class="guia__card-item"><i class="fas fa-tint"></i><span>Solventes usados</span></div>
+                        <div class="guia__card-item"><i class="fas fa-oil-can"></i><span>Aceites y lubricantes</span></div>
+                        <div class="guia__card-item"><i class="fas fa-battery-full"></i><span>Baterías y pilas</span></div>
+                    </div>
+                </div>
+                <div class="guia__card" data-category="reciclable">
+                    <div class="guia__card-header guia__card-header--reciclable"><i class="fas fa-recycle"></i><span>RECICLABLE</span></div>
+                    <div class="guia__card-body">
+                        <div class="guia__card-item"><i class="fas fa-newspaper"></i><span>Papel limpio</span></div>
+                        <div class="guia__card-item"><i class="fas fa-box"></i><span>Cartón y cajas</span></div>
+                        <div class="guia__card-item"><i class="fas fa-wine-bottle"></i><span>Vidrio sin contaminar</span></div>
+                        <div class="guia__card-item"><i class="fas fa-can"></i><span>Latas de aluminio</span></div>
+                    </div>
+                </div>
+                <div class="guia__card" data-category="organico">
+                    <div class="guia__card-header guia__card-header--organico"><i class="fas fa-leaf"></i><span>ORGÁNICO</span></div>
+                    <div class="guia__card-body">
+                        <div class="guia__card-item"><i class="fas fa-apple-alt"></i><span>Restos de frutas</span></div>
+                        <div class="guia__card-item"><i class="fas fa-utensils"></i><span>Restos de comida</span></div>
+                        <div class="guia__card-item"><i class="fas fa-leaf"></i><span>Hojarasca y ramas</span></div>
+                        <div class="guia__card-item"><i class="fas fa-seedling"></i><span>Semillas y tallos</span></div>
+                    </div>
+                </div>
+                <div class="guia__card" data-category="ordinario">
+                    <div class="guia__card-header guia__card-header--ordinario"><i class="fas fa-trash-alt"></i><span>ORDINARIO</span></div>
+                    <div class="guia__card-body">
+                        <div class="guia__card-item"><i class="fas fa-toilet-paper"></i><span>Servilletas y tissues</span></div>
+                        <div class="guia__card-item"><i class="fas fa-smoking"></i><span>Ceniceros y colillas</span></div>
+                        <div class="guia__card-item"><i class="fas fa-cookie"></i><span>Embalajes contaminados</span></div>
+                        <div class="guia__card-item"><i class="fas fa-broom"></i><span>Polvo de barrido</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats" id="beneficios">
+        <div class="stats__bg"></div>
+        <div class="container">
+            <div class="section-header section-header--light">
+                <span class="section-tag section-tag--light"><i class="fas fa-chart-line"></i> Impacto y Beneficios</span>
+                <h2 class="section-title section-title--light">Resultados que <span class="text-green">transforman</span></h2>
+            </div>
+            <div class="stats__grid">
+                <div class="stats__card">
+                    <div class="stats__card-icon"><i class="fas fa-chart-pie"></i></div>
+                    <div class="stats__card-number" data-target="65">0</div>
+                    <div class="stats__card-suffix">%</div>
+                    <h3>Reducción de residuos peligrosos</h3>
+                </div>
+                <div class="stats__card">
+                    <div class="stats__card-icon"><i class="fas fa-file-contract"></i></div>
+                    <div class="stats__card-number" data-target="100">0</div>
+                    <div class="stats__card-suffix">%</div>
+                    <h3>Cumplimiento normativo</h3>
+                </div>
+                <div class="stats__card">
+                    <div class="stats__card-icon"><i class="fas fa-users"></i></div>
+                    <div class="stats__card-number" data-target="90">0</div>
+                    <div class="stats__card-suffix">%</div>
+                    <h3>Aprendices capacitados</h3>
+                </div>
+                <div class="stats__card">
+                    <div class="stats__card-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <div class="stats__card-number" data-target="40">0</div>
+                    <div class="stats__card-suffix">%</div>
+                    <h3>Disminución de incidentes</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recursos Section -->
+    <section class="recursos" id="recursos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-download"></i> Recursos</span>
+                <h2 class="section-title">Material descargable <span class="text-green">de apoyo</span></h2>
+            </div>
+            <div class="recursos__grid">
+                <div class="recursos__card">
+                    <div class="recursos__card-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div class="recursos__card-content">
+                        <h3>Protocolo de Manejo de Residuos</h3>
+                        <p>Documento completo con los procedimientos para la separación y disposición de residuos.</p>
+                    </div>
+                    <a href="#" class="recursos__card-btn"><i class="fas fa-download"></i> Descargar</a>
+                </div>
+                <div class="recursos__card">
+                    <div class="recursos__card-icon"><i class="fas fa-file-excel"></i></div>
+                    <div class="recursos__card-content">
+                        <h3>Cronograma de Recolección</h3>
+                        <p>Calendario mensual de recolección de residuos por área y responsable.</p>
+                    </div>
+                    <a href="#" class="recursos__card-btn"><i class="fas fa-download"></i> Descargar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section class="contacto" id="contacto">
+        <div class="container">
+            <div class="section-header section-header--light">
+                <span class="section-tag section-tag--light"><i class="fas fa-envelope"></i> Contacto</span>
+                <h2 class="section-title section-title--light">¿Necesitas <span class="text-green">más información</span>?</h2>
+            </div>
+            <div class="contacto__grid">
+                <div class="contacto__info">
+                    <div class="contacto__info-card">
+                        <h3><i class="fas fa-map-marker-alt"></i> Ubicación</h3>
+                        <p>Centro de Formación Minero Ambiental SENA<br>Km 2 vía al Mar, Ciénaga de Oro<br>Cesar, Colombia</p>
+                    </div>
+                    <div class="contacto__info-card">
+                        <h3><i class="fas fa-phone-alt"></i> Teléfono</h3>
+                        <p>+57 (605) 300-1234<br>Lunes a Viernes: 7:00 a.m. - 5:00 p.m.</p>
+                    </div>
+                    <div class="contacto__info-card">
+                        <h3><i class="fas fa-envelope"></i> Correo Electrónico</h3>
+                        <p>mineroambiental@sena.edu.co</p>
+                    </div>
+                </div>
+                <div class="contacto__form-wrapper">
+                    <form class="contacto__form" id="contactForm">
+                        <div class="contacto__form-group">
+                            <label for="nombre">Nombre completo</label>
+                            <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required>
+                        </div>
+                        <div class="contacto__form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" placeholder="correo@sena.edu.co" required>
+                        </div>
+                        <div class="contacto__form-group">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" rows="4" placeholder="Describe tu solicitud..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full">
+                            <i class="fas fa-paper-plane"></i> Enviar mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__bottom">
+                <p>&copy; 2026 SENA - Centro de Formación Minero Ambiental. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+    <script src="script.js"></script>
+</body>
+</html>
